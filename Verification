@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Code Request</title>
+
+<style>
+body {
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.box {
+    width: 300px;
+    margin: auto;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+}
+
+button {
+    width: 95%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#requesting, #code {
+    display: none;
+    margin-top: 30px;
+}
+
+#requesting {
+    color: #00aaff;
+    font-size: 20px;
+}
+
+.code {
+    font-size: 40px;
+    color: #00ff88;
+    letter-spacing: 8px;
+    margin-top: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Phone Verification Demo</h2>
+
+<input id="number" placeholder="Enter phone number">
+
+<button onclick="sendCode()">Send Code</button>
+
+<div id="requesting">
+    Requesting code...
+</div>
+
+<div id="code">
+    Demo code:
+    <div class="code" id="showCode"></div>
+</div>
+
+</div>
+
+
+<script>
+
+function sendCode(){
+
+    let number = document.getElementById("number").value;
+
+    if(number === ""){
+        alert("Please enter a number first");
+        return;
+    }
+
+    document.getElementById("requesting").style.display = "block";
+    document.getElementById("code").style.display = "none";
+
+    setTimeout(function(){
+
+        document.getElementById("requesting").style.display = "none";
+        document.getElementById("code").style.display = "block";
+
+        let randomCode = Math.floor(1000 + Math.random() * 9000);
+
+        document.getElementById("showCode").innerHTML = randomCode;
+
+    }, 10000);
+
+}
+
+</script>
+
+</body>
+</html>
